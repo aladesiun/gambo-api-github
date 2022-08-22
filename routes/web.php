@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\productController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin.index');
 });
+
+Route::controller(productController::class)->group(function (){
+
+    Route::prefix('/product')->group(function (){
+
+        Route::get('/add','store')->name('addProduct');
+        Route::post('/all','index')->name('getProduct');
+    });
+
+});
+//Route::apiResources([productController::class]);
