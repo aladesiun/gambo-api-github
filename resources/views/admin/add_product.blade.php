@@ -14,7 +14,7 @@
                         <div class="card-title-2">
                             <h4>Add New Product</h4>
                         </div>
-                        <form method="post" action="/product">
+                        <form method="post" action="/product4">
                             <div class="card-body-table">
                                 <div class="news-content-right pd-20">
                                     <div class="form-group">
