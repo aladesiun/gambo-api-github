@@ -17,13 +17,13 @@ Route::get('/', function () {
     return view('admin.index');
 });
 
-Route::controller(productController::class)->group(function (){
-
-    Route::prefix('/product')->group(function (){
-
-        Route::get('/add','store')->name('addProduct');
-        Route::post('/all','index')->name('getProduct');
-    });
-
-});
-//Route::apiResources([productController::class]);
+//Route::controller(productController::class)->group(function (){
+//
+//    Route::prefix('/product')->group(function (){
+//
+//        Route::post('/add','store')->name('addProduct');
+//        Route::get('/all','index')->name('getProduct');
+//    });
+//
+//});
+Route::apiResources(['product' =>productController::class]);

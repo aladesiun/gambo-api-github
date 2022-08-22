@@ -15,7 +15,8 @@ class productController extends Controller
      */
     public function index()
     {
-        return Product::all();
+        $products =Product::all();
+        return view('admin', compact('products'));
 
     }
 
@@ -26,7 +27,7 @@ class productController extends Controller
      */
     public function create()
     {
-
+        return view('admin.add_product');
     }
 
     /**
@@ -51,7 +52,7 @@ class productController extends Controller
                 'manufacturer' => $request->manufacturer,
                 'supplier' => $request->supplier,
             ]);
-        return new Product($product);
+        return redirect()->route('admin.index')->with('success','Product created successfully.');
     }
 
     /**
