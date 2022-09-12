@@ -3,6 +3,7 @@
 * Copyright 2013-2020 Start Bootstrap
 * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-sb-admin/blob/master/LICENSE)
 */
+$(".alert").delay(3000).fadeOut();
 (function ($) {
     "use strict";
     var path = window.location.href;
