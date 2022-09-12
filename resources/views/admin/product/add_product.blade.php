@@ -14,7 +14,7 @@
                         <div class="card-title-2">
                             <h4>Add New Product</h4>
                         </div>
-                        <form method="post" action="/product/add">
+                        <form method="post" action="/product/add"  enctype="multipart/form-data">
                             @include('admin.layout.notification')
                             @csrf
                             <div class="card-body-table">
@@ -25,7 +25,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">Category*</label>
-                                        <select id="category" value="{{old('category')}}" required name="category" class="form-control">
+                                        <select id="category" value="{{old('category')}}" required name="category[]" class="form-control" multiple="multiple">
                                             <option selected>--Select Category--</option>
 
                                         @foreach($categories as $category)
@@ -36,15 +36,23 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">Purchase Price*</label>
-                                        <input  value="{{old('purchase_price')}}"  name="purchase_price" type="text" class="form-control" placeholder="$0" />
+                                        <input  value="{{old('purchase_price')}}"  name="purchase_price" type="number" class="form-control" placeholder="$0" />
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">Bulk Price*</label>
-                                        <input  value="{{old('bulk_price')}}" required name="bulk_price" type="text" class="form-control" placeholder="$0" />
+                                        <input  value="{{old('bulk_price')}}" required name="bulk_price" type="number" class="form-control" placeholder="$0" />
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">Price*</label>
-                                        <input  value="{{old('price')}}" required name="price" type="text" class="form-control" placeholder="$0" />
+                                        <input  value="{{old('price')}}" required name="price" type="number" class="form-control" placeholder="$0" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Stock*</label>
+                                        <input  value="{{old('stock')}}" required name="stock" type="number" class="form-control" placeholder="$0" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Unit Stock*</label>
+                                        <input  value="{{old('unit_stock')}}" required name="unit_stock" type="number" class="form-control" placeholder="$0" />
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">Status*</label>

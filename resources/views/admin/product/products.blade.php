@@ -65,18 +65,24 @@
                                 </tr>
                             </thead>
                             <tbody>
+
                             @foreach($products as $product)
                                 <tr>
                                     <td><input type="checkbox" class="check-item" name="ids[]" value="10" /></td>
                                     <td>{{$product->id}}</td>
                                     <td>
+
                                         <div class="cate-img-5">
-                                            <img src="images/product/img-1.jpg" alt="" />
+                                            <img src="{{asset('storage/blogs-images/'.$product->image)}}" alt="{{$product->id}}" />
+
                                         </div>
                                     </td>
                                     <td>{{$product->name}}</td>
-                                    @if($product->category)
-                                    <td>{{$product->category->name}}</td>
+                                    @if($product->categories)
+
+                                    <td>
+                                        @foreach($product->categories as $category){{$category->name }}, @endforeach
+                                    </td>
                                     @endif
                                     <td>{{date('d-m-Y', strtotime($product->created_at))}}</td>
                                     @if($product->active == 1)
