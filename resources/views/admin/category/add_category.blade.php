@@ -25,7 +25,7 @@
                                         </div>
 
                                     </div>
-                                    <button class="save-btn hover-btn m-2 ml-3" type="submit">Add New Category</button>
+                                    <button class="save-btn hover-btn m-2 ml-3" type="submit">AddNew Category</button>
                                 </div>
                         </form>
 
