@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\productRequest;
+use App\Http\Resources\productResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -35,11 +36,11 @@ class productController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(productRequest $request)
     {
-        $product = Product::create($request->validate()+[
+         Product::create($request->validate()+[
                 'name' => $request->name,
                 'description' => $request->description,
                 'purchase_price' => $request->purchase_price,
@@ -60,10 +61,12 @@ class productController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return productResource
      */
     public function show($id)
     {
+        $product =Product::find($id);
+        return new productResource($product);
     }
 
     /**
@@ -74,7 +77,8 @@ class productController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product =Product::find($id);
+        return $product;
     }
 
     /**
@@ -86,7 +90,8 @@ class productController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product =Product::updated($request, $id);
+        return $product;
     }
 
     /**

@@ -3,6 +3,7 @@
 * Copyright 2013-2020 Start Bootstrap
 * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-sb-admin/blob/master/LICENSE)
 */
+$(".alert").delay(3000).fadeOut();
 (function ($) {
     "use strict";
     var path = window.location.href;
@@ -22,10 +23,10 @@ $(".check-all").click(function () {
 window.oncontextmenu = function () {
     return false;
 };
-$(document).keydown(function (event) {
-    if (event.keyCode == 123) {
-        return false;
-    } else if ((event.ctrlKey && event.shiftKey && event.keyCode == 73) || (event.ctrlKey && event.shiftKey && event.keyCode == 74)) {
-        return false;
-    }
-});
+// $(document).keydown(function (event) {
+//     if (event.keyCode == 123) {
+//         return false;
+//     } else if ((event.ctrlKey && event.shiftKey && event.keyCode == 73) || (event.ctrlKey && event.shiftKey && event.keyCode == 74)) {
+//         return false;
+//     }
+// });

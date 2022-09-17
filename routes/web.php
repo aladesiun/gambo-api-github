@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\productController;
+use App\Http\Controllers\admin\productController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,15 +16,24 @@ use App\Http\Controllers\productController;
 
 Route::get('/', function () {
     return view('admin.index');
-});
+})->name('home');
 
-//Route::controller(productController::class)->group(function (){
-//
-//    Route::prefix('/product')->group(function (){
-//
-//        Route::post('/add','store')->name('addProduct');
-//        Route::get('/all','index')->name('getProduct');
-//    });
-//
-//});
-Route::apiResources(['product' =>productController::class]);
+Route::controller(productController::class)->group(function (){
+
+    Route::prefix('/product')->group(function (){
+
+        Route::post('/add','store')->name('addProduct');
+        Route::get('/add','addPage')->name('addProductPage');
+        Route::get('/','index')->name('viewProductPage');
+    });
+
+});
+Route::controller(CategoryController::class)->group(function (){
+    Route::prefix('category')->group(function (){
+        Route::get('/add',function (){
+            return view('admin.category.add_category');
+        });
+        Route::post('/add','store');
+        Route::get('/','index');
+    });
+});
